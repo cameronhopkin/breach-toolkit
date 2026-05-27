@@ -1,8 +1,8 @@
 """Report generators for Breach Toolkit."""
 
-from .json_reporter import JSONReporter
 from .csv_reporter import CSVReporter
 from .html_reporter import HTMLReporter
+from .json_reporter import JSONReporter
 
 __all__ = [
     "JSONReporter",

@@ -8,14 +8,14 @@ License: MIT
 """
 import csv
 from datetime import datetime
-from pathlib import Path
-from typing import List, Union, Optional
 from io import StringIO
+from pathlib import Path
+from typing import List, Optional, Union
 
-from ..parsers.stealer_log_parser import Credential
-from ..parsers.combo_parser import ComboEntry
-from ..core.password_checker import BreachResult
 from ..core.email_checker import EmailBreachResult
+from ..core.password_checker import BreachResult
+from ..parsers.combo_parser import ComboEntry
+from ..parsers.stealer_log_parser import Credential
 
 
 class CSVReporter:

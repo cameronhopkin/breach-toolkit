@@ -5,13 +5,13 @@ Tests for the email checker module.
 Author: Cameron Hopkin
 License: MIT
 """
-import pytest
 from unittest.mock import AsyncMock, MagicMock
-import hashlib
+
+import pytest
 
 from breach_toolkit.core.email_checker import (
-    EmailChecker,
     EmailBreachResult,
+    EmailChecker,
 )
 
 

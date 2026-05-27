@@ -8,9 +8,8 @@ License: MIT
 """
 import logging
 import sys
-from typing import Optional
 from pathlib import Path
-
+from typing import Optional
 
 # Default format for log messages
 DEFAULT_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

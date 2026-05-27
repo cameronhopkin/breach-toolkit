@@ -1,8 +1,8 @@
 """Core breach checking functionality."""
 
-from .password_checker import PasswordChecker, check_password_sync, BreachResult
-from .email_checker import EmailChecker, EmailBreachResult
+from .email_checker import EmailBreachResult, EmailChecker
 from .hash_utils import HashUtils
+from .password_checker import BreachResult, PasswordChecker, check_password_sync
 
 __all__ = [
     "PasswordChecker",

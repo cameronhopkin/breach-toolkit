@@ -66,7 +66,17 @@ target-version = "py39"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "B", "S"]
-ignore = ["S101"]  # Allow assert in tests
+ignore = [
+    "S101",  # Allow assert (used in tests)
+    "E501",  # Line length handled separately; some lines (HTML template literals, hash chains) don't split cleanly
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S105",  # Hardcoded password strings are test fixtures
+    "S106",  # Hardcoded password kwargs are test fixtures
+    "S324",  # SHA-1 is required by HIBP API and must be exercised in tests
+]
 
 [tool.mypy]
 python_version = "3.9"

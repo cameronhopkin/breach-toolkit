@@ -5,11 +5,11 @@ Breach Toolkit - Configuration Management
 Author: Cameron Hopkin
 License: MIT
 """
-import os
-from pathlib import Path
-from dataclasses import dataclass, field
-from typing import Optional
 import json
+import os
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Optional
 
 
 @dataclass

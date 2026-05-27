@@ -7,14 +7,13 @@ Author: Cameron Hopkin
 License: MIT
 """
 from datetime import datetime
-from pathlib import Path
-from typing import List, Union, Optional
 from html import escape
+from pathlib import Path
+from typing import List, Optional, Union
 
-from ..parsers.stealer_log_parser import Credential
-from ..parsers.combo_parser import ComboEntry
 from ..core.password_checker import BreachResult
-from ..core.email_checker import EmailBreachResult
+from ..parsers.combo_parser import ComboEntry
+from ..parsers.stealer_log_parser import Credential
 
 
 class HTMLReporter:

@@ -5,17 +5,16 @@ Tests for the parser modules.
 Author: Cameron Hopkin
 License: MIT
 """
-import pytest
 import tempfile
 from pathlib import Path
 
-from breach_toolkit.parsers.stealer_log_parser import (
-    StealerLogParser,
-    Credential,
-)
 from breach_toolkit.parsers.combo_parser import (
-    ComboParser,
     ComboEntry,
+    ComboParser,
+)
+from breach_toolkit.parsers.stealer_log_parser import (
+    Credential,
+    StealerLogParser,
 )
 
 

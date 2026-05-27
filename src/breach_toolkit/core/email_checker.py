@@ -7,13 +7,15 @@ Author: Cameron Hopkin
 License: MIT
 """
 import asyncio
-import aiohttp
 import hashlib
-from typing import Optional, List
 from dataclasses import dataclass, field
 from datetime import datetime
-from ..utils.rate_limiter import RateLimiter
+from typing import List, Optional
+
+import aiohttp
+
 from ..utils.logging_config import get_logger
+from ..utils.rate_limiter import RateLimiter
 
 logger = get_logger(__name__)
 

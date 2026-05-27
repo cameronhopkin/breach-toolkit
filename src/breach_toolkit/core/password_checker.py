@@ -6,13 +6,15 @@ Uses k-anonymity to check passwords against HIBP without exposing the password.
 Author: Cameron Hopkin
 License: MIT
 """
-import hashlib
 import asyncio
-import aiohttp
-from typing import Optional, Tuple
+import hashlib
 from dataclasses import dataclass
-from ..utils.rate_limiter import RateLimiter
+from typing import Optional, Tuple
+
+import aiohttp
+
 from ..utils.logging_config import get_logger
+from ..utils.rate_limiter import RateLimiter
 
 logger = get_logger(__name__)
 

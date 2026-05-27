@@ -6,13 +6,15 @@ Author: Cameron Hopkin
 License: MIT
 """
 import asyncio
+
 import click
-from pathlib import Path
-from .core.password_checker import PasswordChecker, check_password_sync
+
 from .core.email_checker import EmailChecker
+from .core.password_checker import PasswordChecker, check_password_sync
 from .parsers.stealer_log_parser import StealerLogParser
-from .reporters.json_reporter import JSONReporter
 from .reporters.csv_reporter import CSVReporter
+from .reporters.json_reporter import JSONReporter
+
 
 @click.group()
 @click.version_option(version="1.0.0")
