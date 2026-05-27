@@ -14,7 +14,7 @@ import asyncio
 # Add parent directory to path for local development
 sys.path.insert(0, str(__file__).rsplit('/', 2)[0] + '/src')
 
-from breach_sentinel import PasswordChecker, check_password_sync
+from breach_toolkit import PasswordChecker, check_password_sync
 
 
 def check_sync(password: str):
@@ -71,7 +71,7 @@ def main():
     ]
 
     print("=" * 50)
-    print("Breach Sentinel - Password Check Example")
+    print("Breach Toolkit - Password Check Example")
     print("=" * 50)
 
     # Sync check

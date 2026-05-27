@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Email Breach Checker
+Breach Toolkit - Email Breach Checker
 Check if email addresses appear in known breaches.
 
 Author: Cameron Hopkin
@@ -49,7 +49,7 @@ class EmailChecker:
         self._session: Optional[aiohttp.ClientSession] = None
 
     async def __aenter__(self):
-        headers = {"User-Agent": "BreachSentinel/1.0"}
+        headers = {"User-Agent": "BreachToolkit/1.0"}
         if self.hibp_api_key:
             headers["hibp-api-key"] = self.hibp_api_key
 

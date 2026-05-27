@@ -1,4 +1,4 @@
-"""Utility modules for Breach Sentinel."""
+"""Utility modules for Breach Toolkit."""
 
 from .rate_limiter import RateLimiter
 from .logging_config import get_logger, setup_logging

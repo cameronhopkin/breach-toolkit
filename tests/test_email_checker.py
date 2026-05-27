@@ -9,7 +9,7 @@ import pytest
 from unittest.mock import AsyncMock, MagicMock
 import hashlib
 
-from breach_sentinel.core.email_checker import (
+from breach_toolkit.core.email_checker import (
     EmailChecker,
     EmailBreachResult,
 )

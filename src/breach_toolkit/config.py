@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Configuration Management
+Breach Toolkit - Configuration Management
 
 Author: Cameron Hopkin
 License: MIT
@@ -18,16 +18,16 @@ class HIBPConfig:
     api_key: Optional[str] = None
     rate_limit: float = 1.5  # requests per second
     timeout: int = 10
-    user_agent: str = "BreachSentinel/1.0"
+    user_agent: str = "BreachToolkit/1.0"
 
     @classmethod
     def from_env(cls) -> "HIBPConfig":
         """Create config from environment variables."""
         return cls(
             api_key=os.getenv("HIBP_API_KEY"),
-            rate_limit=float(os.getenv("BREACH_SENTINEL_RATE_LIMIT", "1.5")),
-            timeout=int(os.getenv("BREACH_SENTINEL_TIMEOUT", "10")),
-            user_agent=os.getenv("BREACH_SENTINEL_USER_AGENT", "BreachSentinel/1.0")
+            rate_limit=float(os.getenv("BREACH_TOOLKIT_RATE_LIMIT", "1.5")),
+            timeout=int(os.getenv("BREACH_TOOLKIT_TIMEOUT", "10")),
+            user_agent=os.getenv("BREACH_TOOLKIT_USER_AGENT", "BreachToolkit/1.0")
         )
 
 
@@ -50,7 +50,7 @@ class ReporterConfig:
 
 @dataclass
 class Config:
-    """Main configuration class for Breach Sentinel."""
+    """Main configuration class for Breach Toolkit."""
     hibp: HIBPConfig = field(default_factory=HIBPConfig.from_env)
     parser: ParserConfig = field(default_factory=ParserConfig)
     reporter: ReporterConfig = field(default_factory=ReporterConfig)
@@ -90,7 +90,7 @@ class Config:
         """Create configuration from environment variables."""
         return cls(
             hibp=HIBPConfig.from_env(),
-            log_level=os.getenv("BREACH_SENTINEL_LOG_LEVEL", "INFO")
+            log_level=os.getenv("BREACH_TOOLKIT_LOG_LEVEL", "INFO")
         )
 
     def to_dict(self) -> dict:

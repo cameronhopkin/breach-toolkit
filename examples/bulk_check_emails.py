@@ -15,8 +15,8 @@ import asyncio
 # Add parent directory to path for local development
 sys.path.insert(0, str(__file__).rsplit('/', 2)[0] + '/src')
 
-from breach_sentinel.core.email_checker import EmailChecker
-from breach_sentinel.reporters.json_reporter import JSONReporter
+from breach_toolkit.core.email_checker import EmailChecker
+from breach_toolkit.reporters.json_reporter import JSONReporter
 
 
 async def check_emails(emails: list[str], api_key: str):
@@ -72,7 +72,7 @@ def main():
     ]
 
     print("=" * 50)
-    print("Breach Sentinel - Email Breach Check Example")
+    print("Breach Toolkit - Email Breach Check Example")
     print("=" * 50)
 
     # Run the check

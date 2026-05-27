@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Rate Limiter
+Breach Toolkit - Rate Limiter
 Async-compatible rate limiting for API requests.
 
 Author: Cameron Hopkin

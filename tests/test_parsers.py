@@ -9,11 +9,11 @@ import pytest
 import tempfile
 from pathlib import Path
 
-from breach_sentinel.parsers.stealer_log_parser import (
+from breach_toolkit.parsers.stealer_log_parser import (
     StealerLogParser,
     Credential,
 )
-from breach_sentinel.parsers.combo_parser import (
+from breach_toolkit.parsers.combo_parser import (
     ComboParser,
     ComboEntry,
 )

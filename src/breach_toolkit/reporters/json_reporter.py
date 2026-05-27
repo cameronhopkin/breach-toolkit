@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - JSON Reporter
+Breach Toolkit - JSON Reporter
 Generate JSON reports from parsed credentials.
 
 Author: Cameron Hopkin
@@ -140,10 +140,10 @@ class JSONReporter:
         if self.include_metadata:
             report = {
                 "metadata": {
-                    "title": title or "Breach Sentinel Report",
+                    "title": title or "Breach Toolkit Report",
                     "generated_at": datetime.utcnow().isoformat(),
                     "total_items": len(items),
-                    "generator": "Breach Sentinel v1.0.0"
+                    "generator": "Breach Toolkit v1.0.0"
                 },
                 "data": items
             }
@@ -204,7 +204,7 @@ class JSONReporter:
         summary = {
             "metadata": {
                 "generated_at": datetime.utcnow().isoformat(),
-                "generator": "Breach Sentinel v1.0.0"
+                "generator": "Breach Toolkit v1.0.0"
             },
             "summary": {
                 "total_credentials": len(credentials),

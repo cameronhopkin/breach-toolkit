@@ -1,5 +1,5 @@
 """
-Breach Sentinel - Credential breach detection toolkit.
+Breach Toolkit - Credential breach detection toolkit.
 
 Open-source toolkit for checking credentials against breach databases
 using k-anonymity for secure, privacy-preserving verification.

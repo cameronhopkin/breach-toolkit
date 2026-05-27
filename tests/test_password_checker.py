@@ -9,7 +9,7 @@ import pytest
 from unittest.mock import AsyncMock, patch, MagicMock
 import hashlib
 
-from breach_sentinel.core.password_checker import (
+from breach_toolkit.core.password_checker import (
     PasswordChecker,
     BreachResult,
     check_password_sync,

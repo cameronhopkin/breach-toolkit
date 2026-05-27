@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Hash Utilities
+Breach Toolkit - Hash Utilities
 Common hashing functions for credential processing.
 
 Author: Cameron Hopkin

@@ -32,11 +32,11 @@ jobs:
 
     - name: Run type checking
       run: |
-        mypy src/breach_sentinel/ --ignore-missing-imports
+        mypy src/breach_toolkit/ --ignore-missing-imports
 
     - name: Run tests
       run: |
-        pytest tests/ -v --cov=breach_sentinel --cov-report=xml
+        pytest tests/ -v --cov=breach_toolkit --cov-report=xml
 
     - name: Upload coverage
       uses: codecov/codecov-action@v3

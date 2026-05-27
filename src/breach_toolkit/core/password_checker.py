@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Password Breach Checker
+Breach Toolkit - Password Breach Checker
 Uses k-anonymity to check passwords against HIBP without exposing the password.
 
 Author: Cameron Hopkin
@@ -41,7 +41,7 @@ class PasswordChecker:
         self,
         rate_limit: float = 1.5,  # requests per second
         timeout: int = 10,
-        user_agent: str = "BreachSentinel/1.0"
+        user_agent: str = "BreachToolkit/1.0"
     ):
         self.rate_limiter = RateLimiter(rate_limit)
         self.timeout = aiohttp.ClientTimeout(total=timeout)

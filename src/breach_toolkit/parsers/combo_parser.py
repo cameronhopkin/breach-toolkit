@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Combo List Parser
+Breach Toolkit - Combo List Parser
 Parse email:password combination lists from breach data.
 
 Author: Cameron Hopkin

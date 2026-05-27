@@ -1,4 +1,4 @@
-"""Report generators for Breach Sentinel."""
+"""Report generators for Breach Toolkit."""
 
 from .json_reporter import JSONReporter
 from .csv_reporter import CSVReporter

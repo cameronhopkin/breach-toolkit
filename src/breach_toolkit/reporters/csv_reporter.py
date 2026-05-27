@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - CSV Reporter
+Breach Toolkit - CSV Reporter
 Generate CSV reports from parsed credentials.
 
 Author: Cameron Hopkin

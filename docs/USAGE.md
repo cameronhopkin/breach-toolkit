@@ -1,6 +1,6 @@
-# Breach Sentinel Usage Guide
+# Breach Toolkit Usage Guide
 
-This guide covers common usage patterns for Breach Sentinel.
+This guide covers common usage patterns for Breach Toolkit.
 
 ## Table of Contents
 
@@ -15,14 +15,14 @@ This guide covers common usage patterns for Breach Sentinel.
 ### From PyPI
 
 ```bash
-pip install breach-sentinel
+pip install breach-toolkit
 ```
 
 ### From Source
 
 ```bash
-git clone https://github.com/cameronhopkin/breach-sentinel.git
-cd breach-sentinel
+git clone https://github.com/cameronhopkin/breach-toolkit.git
+cd breach-toolkit
 pip install -e .
 ```
 
@@ -39,7 +39,7 @@ pip install -e ".[dev]"
 Check if a password has been exposed in data breaches:
 
 ```bash
-breach-sentinel check-password "YourPassword123"
+breach-toolkit check-password "YourPassword123"
 ```
 
 The password is never sent to any external service. Only the first 5 characters of the SHA-1 hash are sent to HIBP (k-anonymity).
@@ -53,7 +53,7 @@ Check if an email address appears in known breaches:
 export HIBP_API_KEY="your-api-key"
 
 # Check email
-breach-sentinel check-email user@example.com
+breach-toolkit check-email user@example.com
 ```
 
 ### Parse Stealer Logs
@@ -62,16 +62,16 @@ Extract credentials from infostealer log files:
 
 ```bash
 # Parse a single file
-breach-sentinel parse-logs /path/to/logfile.txt -o results.json
+breach-toolkit parse-logs /path/to/logfile.txt -o results.json
 
 # Parse with CSV output
-breach-sentinel parse-logs /path/to/logfile.txt -o results.csv -f csv
+breach-toolkit parse-logs /path/to/logfile.txt -o results.csv -f csv
 ```
 
 ### Parse Directory of Logs
 
 ```bash
-breach-sentinel parse-directory /path/to/logs/ -o all_results.json
+breach-toolkit parse-directory /path/to/logs/ -o all_results.json
 ```
 
 ### Bulk Password Check
@@ -79,7 +79,7 @@ breach-sentinel parse-directory /path/to/logs/ -o all_results.json
 Check multiple passwords from a file:
 
 ```bash
-breach-sentinel check-passwords-bulk passwords.txt -o results.json -c 5
+breach-toolkit check-passwords-bulk passwords.txt -o results.json -c 5
 ```
 
 Where `passwords.txt` contains one password per line.
@@ -89,7 +89,7 @@ Where `passwords.txt` contains one password per line.
 ### Basic Password Check
 
 ```python
-from breach_sentinel import check_password_sync
+from breach_toolkit import check_password_sync
 
 result = check_password_sync("password123")
 
@@ -103,7 +103,7 @@ else:
 
 ```python
 import asyncio
-from breach_sentinel import PasswordChecker
+from breach_toolkit import PasswordChecker
 
 async def check_passwords():
     async with PasswordChecker() as checker:
@@ -126,7 +126,7 @@ results = asyncio.run(check_passwords())
 
 ```python
 import asyncio
-from breach_sentinel.core.email_checker import EmailChecker
+from breach_toolkit.core.email_checker import EmailChecker
 
 async def check_email():
     async with EmailChecker(hibp_api_key="your-key") as checker:
@@ -143,7 +143,7 @@ asyncio.run(check_email())
 ### Parsing Stealer Logs
 
 ```python
-from breach_sentinel.parsers.stealer_log_parser import StealerLogParser
+from breach_toolkit.parsers.stealer_log_parser import StealerLogParser
 
 parser = StealerLogParser(deduplicate=True)
 
@@ -156,9 +156,9 @@ for credential in parser.parse_file("/path/to/logfile.txt"):
 ### Generating Reports
 
 ```python
-from breach_sentinel.parsers.stealer_log_parser import StealerLogParser
-from breach_sentinel.reporters.json_reporter import JSONReporter
-from breach_sentinel.reporters.html_reporter import HTMLReporter
+from breach_toolkit.parsers.stealer_log_parser import StealerLogParser
+from breach_toolkit.reporters.json_reporter import JSONReporter
+from breach_toolkit.reporters.html_reporter import HTMLReporter
 
 # Parse credentials
 parser = StealerLogParser()
@@ -180,9 +180,9 @@ html_reporter.save(credentials, "report.html")
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `HIBP_API_KEY` | API key for HIBP email checks | None |
-| `BREACH_SENTINEL_RATE_LIMIT` | Requests per second | 1.5 |
-| `BREACH_SENTINEL_TIMEOUT` | Request timeout (seconds) | 10 |
-| `BREACH_SENTINEL_LOG_LEVEL` | Logging level | INFO |
+| `BREACH_TOOLKIT_RATE_LIMIT` | Requests per second | 1.5 |
+| `BREACH_TOOLKIT_TIMEOUT` | Request timeout (seconds) | 10 |
+| `BREACH_TOOLKIT_LOG_LEVEL` | Logging level | INFO |
 
 ### Configuration File
 
@@ -210,7 +210,7 @@ Create a `config.json` file:
 Load in Python:
 
 ```python
-from breach_sentinel.config import Config, set_config
+from breach_toolkit.config import Config, set_config
 
 config = Config.from_file("config.json")
 set_config(config)
@@ -221,7 +221,7 @@ set_config(config)
 ### Custom Rate Limiting
 
 ```python
-from breach_sentinel import PasswordChecker
+from breach_toolkit import PasswordChecker
 
 checker = PasswordChecker(
     rate_limit=0.5,  # 0.5 requests per second
@@ -233,7 +233,7 @@ checker = PasswordChecker(
 ### Parsing Multiple Stealer Formats
 
 ```python
-from breach_sentinel.parsers.stealer_log_parser import StealerLogParser
+from breach_toolkit.parsers.stealer_log_parser import StealerLogParser
 
 parser = StealerLogParser()
 
@@ -249,7 +249,7 @@ for cred in parser.parse_file("file.txt", stealer_type="redline"):
 ### Combo List Parsing
 
 ```python
-from breach_sentinel.parsers.combo_parser import ComboParser
+from breach_toolkit.parsers.combo_parser import ComboParser
 
 parser = ComboParser(
     validate_emails=True,
@@ -267,7 +267,7 @@ print(parser.get_stats())
 ### Custom Reporting
 
 ```python
-from breach_sentinel.reporters.json_reporter import JSONReporter
+from breach_toolkit.reporters.json_reporter import JSONReporter
 
 reporter = JSONReporter(
     indent=4,

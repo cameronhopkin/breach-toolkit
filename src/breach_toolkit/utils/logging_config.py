@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Logging Configuration
+Breach Toolkit - Logging Configuration
 Centralized logging setup for the application.
 
 Author: Cameron Hopkin

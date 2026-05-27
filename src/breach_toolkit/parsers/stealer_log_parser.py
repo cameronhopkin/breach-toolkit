@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Stealer Log Parser
+Breach Toolkit - Stealer Log Parser
 Parse common infostealer log formats (Redline, Vidar, Raccoon, etc.)
 
 Author: Cameron Hopkin

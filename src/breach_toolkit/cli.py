@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Command Line Interface
+Breach Toolkit - Command Line Interface
 
 Author: Cameron Hopkin
 License: MIT
@@ -17,7 +17,7 @@ from .reporters.csv_reporter import CSVReporter
 @click.group()
 @click.version_option(version="1.0.0")
 def cli():
-    """Breach Sentinel - Credential breach detection toolkit."""
+    """Breach Toolkit - Credential breach detection toolkit."""
     pass
 
 @cli.command()

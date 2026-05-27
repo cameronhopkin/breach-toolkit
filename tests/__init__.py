@@ -1,1 +1,1 @@
-"""Tests for Breach Sentinel."""
+"""Tests for Breach Toolkit."""
