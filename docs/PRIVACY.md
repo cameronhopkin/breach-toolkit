@@ -1,10 +1,10 @@
 # Privacy & Security
 
-Breach Sentinel is designed with privacy as a core principle. This document explains how your data is protected.
+Breach Toolkit is designed with privacy as a core principle. This document explains how your data is protected.
 
 ## K-Anonymity: How Password Checks Work
 
-When you check a password, Breach Sentinel uses a technique called **k-anonymity** to protect your privacy.
+When you check a password, Breach Toolkit uses a technique called **k-anonymity** to protect your privacy.
 
 ### The Problem
 
@@ -16,12 +16,12 @@ Traditional breach checking would require sending your password (or its full has
 
 ### The Solution: K-Anonymity
 
-Instead of sending your full password hash, Breach Sentinel:
+Instead of sending your full password hash, Breach Toolkit:
 
 1. **Hashes your password locally** using SHA-1
 2. **Sends only the first 5 characters** of the 40-character hash to HIBP
 3. **HIBP returns ~500 matching hash suffixes** (all hashes starting with those 5 characters)
-4. **Breach Sentinel checks locally** if your full hash is in the returned list
+4. **Breach Toolkit checks locally** if your full hash is in the returned list
 
 ```
 Your Password: "secret123"
@@ -115,7 +115,7 @@ When working with credential files:
 
 ## Compliance Considerations
 
-While Breach Sentinel is designed for security research and incident response, consider:
+While Breach Toolkit is designed for security research and incident response, consider:
 
 - **Data Protection Laws**: Ensure you have authorization to process credentials
 - **Breach Notification**: Follow applicable notification requirements
@@ -124,10 +124,10 @@ While Breach Sentinel is designed for security research and incident response, c
 
 ## Audit Trail
 
-Breach Sentinel can be configured for logging:
+Breach Toolkit can be configured for logging:
 
 ```python
-from breach_sentinel.config import Config, set_config
+from breach_toolkit.config import Config, set_config
 
 config = Config(log_level="DEBUG")
 set_config(config)

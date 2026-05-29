@@ -15,11 +15,11 @@ from pathlib import Path
 # Add parent directory to path for local development
 sys.path.insert(0, str(__file__).rsplit('/', 2)[0] + '/src')
 
-from breach_sentinel.parsers.stealer_log_parser import StealerLogParser
-from breach_sentinel.parsers.combo_parser import ComboParser
-from breach_sentinel.reporters.json_reporter import JSONReporter
-from breach_sentinel.reporters.csv_reporter import CSVReporter
-from breach_sentinel.reporters.html_reporter import HTMLReporter
+from breach_toolkit.parsers.stealer_log_parser import StealerLogParser
+from breach_toolkit.parsers.combo_parser import ComboParser
+from breach_toolkit.reporters.json_reporter import JSONReporter
+from breach_toolkit.reporters.csv_reporter import CSVReporter
+from breach_toolkit.reporters.html_reporter import HTMLReporter
 
 
 def create_sample_files() -> dict[str, str]:
@@ -148,7 +148,7 @@ def cleanup_files(files: dict[str, str]):
 def main():
     """Main entry point."""
     print("=" * 50)
-    print("Breach Sentinel - Parse & Report Example")
+    print("Breach Toolkit - Parse & Report Example")
     print("=" * 50)
 
     # Check for command line argument

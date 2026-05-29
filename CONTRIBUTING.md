@@ -1,6 +1,6 @@
-# Contributing to Breach Sentinel
+# Contributing to Breach Toolkit
 
-Thank you for your interest in contributing to Breach Sentinel! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to Breach Toolkit! This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
 
@@ -10,7 +10,7 @@ Please be respectful and constructive in all interactions. We're building securi
 
 ### Reporting Bugs
 
-1. Check if the bug has already been reported in [Issues](https://github.com/cameronhopkin/breach-sentinel/issues)
+1. Check if the bug has already been reported in [Issues](https://github.com/cameronhopkin/breach-toolkit/issues)
 2. If not, create a new issue with:
    - Clear, descriptive title
    - Steps to reproduce
@@ -38,8 +38,8 @@ Please be respectful and constructive in all interactions. We're building securi
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/breach-sentinel.git
-cd breach-sentinel
+git clone https://github.com/YOUR_USERNAME/breach-toolkit.git
+cd breach-toolkit
 
 # Create virtual environment
 python -m venv venv
@@ -98,7 +98,7 @@ def check_password(password: str, timeout: int = 10) -> BreachResult:
 pytest
 
 # Run with coverage
-pytest --cov=breach_sentinel
+pytest --cov=breach_toolkit
 
 # Run specific test file
 pytest tests/test_password_checker.py

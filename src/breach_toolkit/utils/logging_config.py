@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Logging Configuration
+Breach Toolkit - Logging Configuration
 Centralized logging setup for the application.
 
 Author: Cameron Hopkin
@@ -8,9 +8,8 @@ License: MIT
 """
 import logging
 import sys
-from typing import Optional
 from pathlib import Path
-
+from typing import Optional
 
 # Default format for log messages
 DEFAULT_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -84,8 +83,8 @@ def get_logger(name: str) -> logging.Logger:
     """
     logger = logging.getLogger(name)
 
-    # Ensure at least one handler exists
-    if not logger.handlers and not logger.parent.handlers:
+    # Ensure at least one handler exists (in this logger or any ancestor)
+    if not logger.hasHandlers():
         setup_logging()
 
     return logger

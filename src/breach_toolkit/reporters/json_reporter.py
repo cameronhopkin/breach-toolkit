@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - JSON Reporter
+Breach Toolkit - JSON Reporter
 Generate JSON reports from parsed credentials.
 
 Author: Cameron Hopkin
 License: MIT
 """
 import json
+from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
-from typing import List, Union, Optional
-from dataclasses import asdict
+from typing import Any, List, Optional, Union
 
-from ..parsers.stealer_log_parser import Credential
-from ..parsers.combo_parser import ComboEntry
-from ..core.password_checker import BreachResult
 from ..core.email_checker import EmailBreachResult
+from ..core.password_checker import BreachResult
+from ..parsers.combo_parser import ComboEntry
+from ..parsers.stealer_log_parser import Credential
 
 
 class JSONReporter:
@@ -137,13 +137,14 @@ class JSONReporter:
                     items.append(str(item))
 
         # Build report structure
+        report: Any
         if self.include_metadata:
             report = {
                 "metadata": {
-                    "title": title or "Breach Sentinel Report",
+                    "title": title or "Breach Toolkit Report",
                     "generated_at": datetime.utcnow().isoformat(),
                     "total_items": len(items),
-                    "generator": "Breach Sentinel v1.0.0"
+                    "generator": "Breach Toolkit v1.0.0"
                 },
                 "data": items
             }
@@ -190,8 +191,8 @@ class JSONReporter:
             JSON summary string
         """
         # Analyze credentials
-        domains = {}
-        stealer_types = {}
+        domains: dict[str, int] = {}
+        stealer_types: dict[str, int] = {}
 
         for cred in credentials:
             # Count by domain
@@ -204,7 +205,7 @@ class JSONReporter:
         summary = {
             "metadata": {
                 "generated_at": datetime.utcnow().isoformat(),
-                "generator": "Breach Sentinel v1.0.0"
+                "generator": "Breach Toolkit v1.0.0"
             },
             "summary": {
                 "total_credentials": len(credentials),
@@ -216,7 +217,8 @@ class JSONReporter:
 
         if breach_results:
             breached = sum(1 for r in breach_results if r.is_breached)
-            summary["summary"]["breach_check"] = {
+            # mypy sees summary["summary"] as object; the structure is dict by construction above
+            summary["summary"]["breach_check"] = {  # type: ignore[index]
                 "total_checked": len(breach_results),
                 "breached": breached,
                 "clean": len(breach_results) - breached,

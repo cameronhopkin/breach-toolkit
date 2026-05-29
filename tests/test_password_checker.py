@@ -5,13 +5,14 @@ Tests for the password checker module.
 Author: Cameron Hopkin
 License: MIT
 """
-import pytest
-from unittest.mock import AsyncMock, patch, MagicMock
 import hashlib
+from unittest.mock import AsyncMock, MagicMock
 
-from breach_sentinel.core.password_checker import (
-    PasswordChecker,
+import pytest
+
+from breach_toolkit.core.password_checker import (
     BreachResult,
+    PasswordChecker,
     check_password_sync,
 )
 

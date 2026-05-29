@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - CSV Reporter
+Breach Toolkit - CSV Reporter
 Generate CSV reports from parsed credentials.
 
 Author: Cameron Hopkin
@@ -8,14 +8,14 @@ License: MIT
 """
 import csv
 from datetime import datetime
-from pathlib import Path
-from typing import List, Union, Optional
 from io import StringIO
+from pathlib import Path
+from typing import List, Optional, Union
 
-from ..parsers.stealer_log_parser import Credential
-from ..parsers.combo_parser import ComboEntry
-from ..core.password_checker import BreachResult
 from ..core.email_checker import EmailBreachResult
+from ..core.password_checker import BreachResult
+from ..parsers.combo_parser import ComboEntry
+from ..parsers.stealer_log_parser import Credential
 
 
 class CSVReporter:
@@ -217,14 +217,16 @@ class CSVReporter:
 
         first_item = data[0]
 
+        # mypy can't narrow list element types from isinstance on first_item;
+        # each generate_* method internally handles the relevant type.
         if isinstance(first_item, Credential):
-            return self.generate_credentials(data)
+            return self.generate_credentials(data)  # type: ignore[arg-type]
         elif isinstance(first_item, ComboEntry):
-            return self.generate_combo_entries(data)
+            return self.generate_combo_entries(data)  # type: ignore[arg-type]
         elif isinstance(first_item, BreachResult):
-            return self.generate_breach_results(data)
+            return self.generate_breach_results(data)  # type: ignore[arg-type]
         elif isinstance(first_item, EmailBreachResult):
-            return self.generate_email_results(data)
+            return self.generate_email_results(data)  # type: ignore[arg-type]
         else:
             raise ValueError(f"Unsupported data type: {type(first_item)}")
 

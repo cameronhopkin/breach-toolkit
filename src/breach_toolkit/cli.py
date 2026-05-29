@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Command Line Interface
+Breach Toolkit - Command Line Interface
 
 Author: Cameron Hopkin
 License: MIT
 """
 import asyncio
+from typing import Union
+
 import click
-from pathlib import Path
-from .core.password_checker import PasswordChecker, check_password_sync
+
 from .core.email_checker import EmailChecker
+from .core.password_checker import PasswordChecker, check_password_sync
 from .parsers.stealer_log_parser import StealerLogParser
-from .reporters.json_reporter import JSONReporter
 from .reporters.csv_reporter import CSVReporter
+from .reporters.json_reporter import JSONReporter
+
+ReporterT = Union[JSONReporter, CSVReporter]
+
 
 @click.group()
 @click.version_option(version="1.0.0")
 def cli():
-    """Breach Sentinel - Credential breach detection toolkit."""
+    """Breach Toolkit - Credential breach detection toolkit."""
     pass
 
 @cli.command()
@@ -70,12 +75,9 @@ def parse_logs(filepath: str, output: str, output_format: str):
     click.echo(f"Parsed {len(credentials)} credentials")
 
     if output:
-        if output_format == 'json':
-            reporter = JSONReporter()
-        else:
-            reporter = CSVReporter()
-
-        reporter.save(credentials, output)
+        reporter: ReporterT = JSONReporter() if output_format == 'json' else CSVReporter()
+        # save() signatures use invariant List for backward compat; pre-existing.
+        reporter.save(credentials, output)  # type: ignore[arg-type]
         click.echo(f"Saved to {output}")
     else:
         for cred in credentials[:10]:
@@ -95,12 +97,9 @@ def parse_directory(directory: str, output: str, output_format: str, recursive: 
 
     click.echo(f"Parsed {len(credentials)} total credentials from directory")
 
-    if output_format == 'json':
-        reporter = JSONReporter()
-    else:
-        reporter = CSVReporter()
-
-    reporter.save(credentials, output)
+    reporter: ReporterT = JSONReporter() if output_format == 'json' else CSVReporter()
+    # save() signatures use invariant List for backward compat; pre-existing.
+    reporter.save(credentials, output)  # type: ignore[arg-type]
     click.echo(f"Saved to {output}")
 
 @cli.command()

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Hash Utilities
+Breach Toolkit - Hash Utilities
 Common hashing functions for credential processing.
 
 Author: Cameron Hopkin
@@ -8,8 +8,8 @@ License: MIT
 """
 import hashlib
 import hmac
-from typing import Optional
 from enum import Enum
+from typing import Optional
 
 
 class HashAlgorithm(Enum):
@@ -212,7 +212,7 @@ class HashUtils:
 
 if __name__ == "__main__":
     # Example usage
-    test_password = "password123"  # nosec B105 - example only, not a real password
+    test_password = "password123"  # noqa: S105  # nosec B105 - example demo string, not a real credential
 
     print(f"SHA-1:   {HashUtils.sha1(test_password)}")
     print(f"SHA-256: {HashUtils.sha256(test_password)}")

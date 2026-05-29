@@ -1,8 +1,8 @@
-# Breach Sentinel API Reference
+# Breach Toolkit API Reference
 
 ## Core Modules
 
-### breach_sentinel.core.password_checker
+### breach_toolkit.core.password_checker
 
 #### BreachResult
 
@@ -27,7 +27,7 @@ class PasswordChecker:
         self,
         rate_limit: float = 1.5,    # Requests per second
         timeout: int = 10,          # Timeout in seconds
-        user_agent: str = "BreachSentinel/1.0"
+        user_agent: str = "BreachToolkit/1.0"
     )
 
     async def check_password(self, password: str) -> BreachResult:
@@ -58,7 +58,7 @@ def check_password_sync(password: str) -> BreachResult:
 
 ---
 
-### breach_sentinel.core.email_checker
+### breach_toolkit.core.email_checker
 
 #### EmailBreachResult
 
@@ -96,7 +96,7 @@ class EmailChecker:
 
 ---
 
-### breach_sentinel.core.hash_utils
+### breach_toolkit.core.hash_utils
 
 #### HashUtils
 
@@ -133,7 +133,7 @@ class HashUtils:
 
 ## Parsers
 
-### breach_sentinel.parsers.stealer_log_parser
+### breach_toolkit.parsers.stealer_log_parser
 
 #### Credential
 
@@ -183,7 +183,7 @@ class StealerLogParser:
 
 ---
 
-### breach_sentinel.parsers.combo_parser
+### breach_toolkit.parsers.combo_parser
 
 #### ComboEntry
 
@@ -237,7 +237,7 @@ class ComboParser:
 
 ## Reporters
 
-### breach_sentinel.reporters.json_reporter
+### breach_toolkit.reporters.json_reporter
 
 #### JSONReporter
 
@@ -275,7 +275,7 @@ class JSONReporter:
 
 ---
 
-### breach_sentinel.reporters.csv_reporter
+### breach_toolkit.reporters.csv_reporter
 
 #### CSVReporter
 
@@ -297,7 +297,7 @@ class CSVReporter:
 
 ---
 
-### breach_sentinel.reporters.html_reporter
+### breach_toolkit.reporters.html_reporter
 
 #### HTMLReporter
 
@@ -305,7 +305,7 @@ class CSVReporter:
 class HTMLReporter:
     def __init__(
         self,
-        title: str = "Breach Sentinel Report",
+        title: str = "Breach Toolkit Report",
         mask_passwords: bool = True
     )
 
@@ -329,7 +329,7 @@ class HTMLReporter:
 
 ## Utilities
 
-### breach_sentinel.utils.rate_limiter
+### breach_toolkit.utils.rate_limiter
 
 #### RateLimiter
 
@@ -359,7 +359,7 @@ class RateLimiter:
 
 ---
 
-### breach_sentinel.utils.logging_config
+### breach_toolkit.utils.logging_config
 
 ```python
 def setup_logging(
@@ -381,7 +381,7 @@ def get_context_logger(name: str, **context) -> LoggerAdapter:
 
 ## Configuration
 
-### breach_sentinel.config
+### breach_toolkit.config
 
 #### Config
 

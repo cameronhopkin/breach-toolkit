@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 """
-Breach Sentinel - Email Breach Checker
+Breach Toolkit - Email Breach Checker
 Check if email addresses appear in known breaches.
 
 Author: Cameron Hopkin
 License: MIT
 """
 import asyncio
-import aiohttp
 import hashlib
-from typing import Optional, List
 from dataclasses import dataclass, field
 from datetime import datetime
-from ..utils.rate_limiter import RateLimiter
+from typing import List, Optional
+
+import aiohttp
+
 from ..utils.logging_config import get_logger
+from ..utils.rate_limiter import RateLimiter
 
 logger = get_logger(__name__)
 
@@ -49,7 +51,7 @@ class EmailChecker:
         self._session: Optional[aiohttp.ClientSession] = None
 
     async def __aenter__(self):
-        headers = {"User-Agent": "BreachSentinel/1.0"}
+        headers = {"User-Agent": "BreachToolkit/1.0"}
         if self.hibp_api_key:
             headers["hibp-api-key"] = self.hibp_api_key
 
@@ -85,6 +87,7 @@ class EmailChecker:
 
         try:
             url = self.HIBP_API_URL.format(email=email)
+            assert self._session is not None, "EmailChecker must be used as async context manager"
             async with self._session.get(url) as response:
                 if response.status == 200:
                     breaches = await response.json()

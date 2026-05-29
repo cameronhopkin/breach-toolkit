@@ -1,4 +1,4 @@
-# Breach Sentinel
+# Breach Toolkit
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,21 +10,21 @@ Check if credentials have been compromised without exposing sensitive data. Buil
 
 ## Features
 
-- 🔐 **K-Anonymity Password Checks** - Verify passwords against HIBP without sending the full hash
-- 📧 **Email Breach Lookups** - Check if emails appear in known breaches
-- 📄 **Stealer Log Parsing** - Parse Redline, Vidar, Raccoon, and other formats
-- 📊 **Multiple Output Formats** - JSON, CSV, and HTML reports
-- ⚡ **Async & Bulk Processing** - Handle large credential lists efficiently
-- 🛡️ **Privacy-First Design** - Your data never leaves your system
+- **K-anonymity password checks** - Verify passwords against HIBP without sending the full hash
+- **Email breach lookups** - Check if emails appear in known breaches
+- **Stealer log parsing** - Parse Redline, Vidar, Raccoon, and other formats
+- **Multiple output formats** - JSON, CSV, and HTML reports
+- **Async and bulk processing** - Handle large credential lists efficiently
+- **Privacy-first design** - Your data never leaves your system
 
 ## Installation
 
 ```bash
-pip install breach-sentinel
+pip install breach-toolkit
 
 # Or from source
-git clone https://github.com/cameronhopkin/breach-sentinel.git
-cd breach-sentinel
+git clone https://github.com/cameronhopkin/breach-toolkit.git
+cd breach-toolkit
 pip install -e .
 ```
 
@@ -34,26 +34,26 @@ pip install -e .
 
 ```bash
 # K-anonymity check - password never sent to HIBP
-breach-sentinel check-password "MyPassword123"
+breach-toolkit check-password "MyPassword123"
 ```
 
 ### Check an Email
 
 ```bash
 export HIBP_API_KEY="your-key"
-breach-sentinel check-email user@example.com
+breach-toolkit check-email user@example.com
 ```
 
 ### Parse Stealer Logs
 
 ```bash
-breach-sentinel parse-logs /path/to/logs/ -o results.json
+breach-toolkit parse-logs /path/to/logs/ -o results.json
 ```
 
 ### Python API
 
 ```python
-from breach_sentinel import PasswordChecker, check_password_sync
+from breach_toolkit import PasswordChecker, check_password_sync
 
 # Simple synchronous check
 result = check_password_sync("password123")
@@ -90,8 +90,8 @@ Instead of sending your full password hash to HIBP, we:
 ```bash
 # Environment variables
 export HIBP_API_KEY="your-hibp-api-key"  # Required for email checks
-export BREACH_SENTINEL_RATE_LIMIT="1.5"  # Requests per second
-export BREACH_SENTINEL_LOG_LEVEL="INFO"
+export BREACH_TOOLKIT_RATE_LIMIT="1.5"  # Requests per second
+export BREACH_TOOLKIT_LOG_LEVEL="INFO"
 ```
 
 ## Supported Stealer Formats
@@ -107,19 +107,19 @@ export BREACH_SENTINEL_LOG_LEVEL="INFO"
 
 ```bash
 # Check single password
-breach-sentinel check-password <password>
+breach-toolkit check-password <password>
 
 # Check single email
-breach-sentinel check-email <email> --api-key <key>
+breach-toolkit check-email <email> --api-key <key>
 
 # Parse stealer log file
-breach-sentinel parse-logs <file> -o output.json
+breach-toolkit parse-logs <file> -o output.json
 
 # Parse directory of logs
-breach-sentinel parse-directory <dir> -o output.csv -f csv
+breach-toolkit parse-directory <dir> -o output.csv -f csv
 
 # Bulk check passwords from file
-breach-sentinel check-passwords-bulk <file> -o results.json
+breach-toolkit check-passwords-bulk <file> -o results.json
 ```
 
 ## Security Considerations
@@ -132,8 +132,8 @@ breach-sentinel check-passwords-bulk <file> -o results.json
 ## Project Structure
 
 ```
-breach-sentinel/
-├── src/breach_sentinel/
+breach-toolkit/
+├── src/breach_toolkit/
 │   ├── core/              # Password & email checkers
 │   ├── parsers/           # Log file parsers
 │   ├── reporters/         # Output formatters
@@ -149,8 +149,8 @@ Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ```bash
 # Development setup
-git clone https://github.com/cameronhopkin/breach-sentinel.git
-cd breach-sentinel
+git clone https://github.com/cameronhopkin/breach-toolkit.git
+cd breach-toolkit
 python -m venv venv
 source venv/bin/activate
 pip install -e ".[dev]"
@@ -168,7 +168,4 @@ MIT License - see [LICENSE](LICENSE)
 
 ## Author
 
-**Cameron Hopkin** - Security Engineering Manager
-[LinkedIn](https://linkedin.com/in/cameronhopkin) | [GitHub](https://github.com/cameronhopkin)
-
-Built with 🛡️ for the security community.
+Cameron Hopkin. [LinkedIn](https://linkedin.com/in/cameronhopkin), [GitHub](https://github.com/cameronhopkin).
