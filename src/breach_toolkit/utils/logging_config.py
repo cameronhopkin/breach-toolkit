@@ -83,8 +83,8 @@ def get_logger(name: str) -> logging.Logger:
     """
     logger = logging.getLogger(name)
 
-    # Ensure at least one handler exists
-    if not logger.handlers and not logger.parent.handlers:
+    # Ensure at least one handler exists (in this logger or any ancestor)
+    if not logger.hasHandlers():
         setup_logging()
 
     return logger

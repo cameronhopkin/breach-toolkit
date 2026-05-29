@@ -10,7 +10,7 @@ import json
 from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import Any, List, Optional, Union
 
 from ..core.email_checker import EmailBreachResult
 from ..core.password_checker import BreachResult
@@ -137,6 +137,7 @@ class JSONReporter:
                     items.append(str(item))
 
         # Build report structure
+        report: Any
         if self.include_metadata:
             report = {
                 "metadata": {
@@ -190,8 +191,8 @@ class JSONReporter:
             JSON summary string
         """
         # Analyze credentials
-        domains = {}
-        stealer_types = {}
+        domains: dict[str, int] = {}
+        stealer_types: dict[str, int] = {}
 
         for cred in credentials:
             # Count by domain
@@ -216,7 +217,8 @@ class JSONReporter:
 
         if breach_results:
             breached = sum(1 for r in breach_results if r.is_breached)
-            summary["summary"]["breach_check"] = {
+            # mypy sees summary["summary"] as object; the structure is dict by construction above
+            summary["summary"]["breach_check"] = {  # type: ignore[index]
                 "total_checked": len(breach_results),
                 "breached": breached,
                 "clean": len(breach_results) - breached,

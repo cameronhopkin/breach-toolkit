@@ -24,7 +24,7 @@ class Credential:
     password: str
     source_file: str
     stealer_type: str
-    parsed_at: datetime = None
+    parsed_at: Optional[datetime] = None
 
     def __post_init__(self):
         if self.parsed_at is None:
@@ -83,7 +83,7 @@ class StealerLogParser:
 
     def __init__(self, deduplicate: bool = True):
         self.deduplicate = deduplicate
-        self._seen_hashes = set()
+        self._seen_hashes: set[str] = set()
 
     def _get_credential_hash(self, cred: Credential) -> str:
         """Generate hash for deduplication."""

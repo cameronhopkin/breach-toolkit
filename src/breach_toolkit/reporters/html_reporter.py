@@ -200,7 +200,7 @@ class HTMLReporter:
         # Calculate statistics
         total = len(credentials)
         domains = len(set(c.domain for c in credentials))
-        stealer_types = {}
+        stealer_types: dict[str, int] = {}
         for c in credentials:
             stealer_types[c.stealer_type] = stealer_types.get(c.stealer_type, 0) + 1
 
@@ -327,7 +327,9 @@ class HTMLReporter:
             return "<html><body><p>No data to display</p></body></html>"
 
         if isinstance(data[0], (Credential, ComboEntry)):
-            return self.generate_credentials_report(data, breach_results)
+            # mypy doesn't narrow list element types from isinstance on data[0];
+            # generate_credentials_report accepts both via Union internally.
+            return self.generate_credentials_report(data, breach_results)  # type: ignore[arg-type]
         else:
             raise ValueError(f"Unsupported data type: {type(data[0])}")
 

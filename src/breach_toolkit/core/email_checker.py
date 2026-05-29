@@ -87,6 +87,7 @@ class EmailChecker:
 
         try:
             url = self.HIBP_API_URL.format(email=email)
+            assert self._session is not None, "EmailChecker must be used as async context manager"
             async with self._session.get(url) as response:
                 if response.status == 200:
                     breaches = await response.json()

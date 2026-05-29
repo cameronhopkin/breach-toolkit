@@ -24,7 +24,7 @@ class ComboEntry:
     password: str
     source_file: str
     line_number: int
-    parsed_at: datetime = None
+    parsed_at: Optional[datetime] = None
 
     def __post_init__(self):
         if self.parsed_at is None:
@@ -81,7 +81,7 @@ class ComboParser:
         self.deduplicate = deduplicate
         self.validate_emails = validate_emails
         self.min_password_length = min_password_length
-        self._seen_combos = set()
+        self._seen_combos: set[str] = set()
 
     def _is_valid_email(self, email: str) -> bool:
         """Check if string is a valid email address."""
@@ -108,7 +108,7 @@ class ComboParser:
                         delimiter_counts[delim] += 1
 
         # Return the most common valid delimiter
-        best_delim = max(delimiter_counts, key=delimiter_counts.get)
+        best_delim = max(delimiter_counts, key=lambda d: delimiter_counts[d])
         if delimiter_counts[best_delim] > 0:
             return best_delim
         return None

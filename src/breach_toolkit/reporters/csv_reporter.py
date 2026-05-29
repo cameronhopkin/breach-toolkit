@@ -217,14 +217,16 @@ class CSVReporter:
 
         first_item = data[0]
 
+        # mypy can't narrow list element types from isinstance on first_item;
+        # each generate_* method internally handles the relevant type.
         if isinstance(first_item, Credential):
-            return self.generate_credentials(data)
+            return self.generate_credentials(data)  # type: ignore[arg-type]
         elif isinstance(first_item, ComboEntry):
-            return self.generate_combo_entries(data)
+            return self.generate_combo_entries(data)  # type: ignore[arg-type]
         elif isinstance(first_item, BreachResult):
-            return self.generate_breach_results(data)
+            return self.generate_breach_results(data)  # type: ignore[arg-type]
         elif isinstance(first_item, EmailBreachResult):
-            return self.generate_email_results(data)
+            return self.generate_email_results(data)  # type: ignore[arg-type]
         else:
             raise ValueError(f"Unsupported data type: {type(first_item)}")
 
